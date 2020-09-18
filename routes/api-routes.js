@@ -2,15 +2,6 @@ const db = require("../models");
 
 module.exports = function (app) {
 
-    db.Workout.find({}).then(function (res) {
-        if (res.length === 0) {
-            console.log("there's nothing to see here");
-            require("./seeders/seed.js");
-        }
-    });
-
-
-
     app.get("/api/workouts", (req, res) => {
         db.Workout.find({}).then(dbWorkout => {
             console.log(dbWorkout);
